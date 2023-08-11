@@ -2,18 +2,20 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<c:url value="/novaEmpresa" var="linkServletNovaEmpresa"/>
+<c:url value="/entrada" var="linkEntradaServlet"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Curso JSP - Editar Empresa</title>
 </head>
 <body>
-    <form action="<c:url value="/alteraEmpresa"/>" method="post">
+	<c:import url="logout-parcial.jsp"/>
+    <form action="<c:url value="${linkEntradaServlet }"/>" method="post">
         Nome: <input type="text" name="nome" value="${empresa.nome}"/>
         Data Abertura: <input type="text" name="data" value="<fmt:formatDate value="${empresa.dataAbertura}" pattern="dd/MM/yyyy"/>"/>
         <input hidden="true" type="text" name="id" value="${empresa.id }">
+        <input hidden="true" type="text" name="acao" value="AlterarEmpresa">
         <input type="submit" />
     </form>
 </body>
